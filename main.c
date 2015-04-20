@@ -95,3 +95,5 @@ int main()
 	mlx_loop(e.mlx);
 	return (0);
 }
+
+// http://perso.epitech.eu/~ol/work/raytracer/cours/cours/
