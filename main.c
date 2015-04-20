@@ -70,6 +70,14 @@ int key_hook(int keycode, t_env *e)
 	return (0);
 }
 
+int mouse_hook(int button, int x, int y, t_env *e)
+{
+	mlx_pixel_put(e->mlx, e->win, 2, 2, 0xFF0000);
+	printf("mouse : %d (%d:%d)\n", button, x, y);
+	return (0);
+}
+
+
 int main()
 {
 	//char *map;
@@ -82,6 +90,7 @@ int main()
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "42");
 	mlx_key_hook(e.win, key_hook, &e);
+	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);
 	return (0);
