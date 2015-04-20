@@ -1,34 +1,41 @@
-NAME = ft_ls
+NAME = fdf
 
-SRC = check.c \
-	  file.c \
-	  free_all.c \
-	  ft_ls.c \
-	  ls_l.c \
-	  misc.c \
-	  output.c \
-	  print_r.c \
-	  sort.c \
-	  sort_st.c \
-	  stock.c \
-	  ls_dev.c
+SRC = main.c \
+	  get_next_line.c \
 
+OBJ			=	$(SRC:.c=.o)
 
-OBJ = $(SRC:.c=.o)
+INC			=	-I./include -I./libft/include
+LINK		=	-Llibft -lft $(LDFLAGS) $(MLXFLAGS)
 
-all : $(NAME)
+CFLAGS		=	-Wall -Wextra -Werror -g3 -pedantic
+EXTRAFLAGS	=	--analyze -Weverything -Wno-missing-prototypes -Qunused-arguments
+LDFLAGS		=	-L/usr/X11/lib
+MLXFLAGS	=	-L $(INC_MLX) -lmlx -framework OpenGL -framework AppKit	
+FLAGS		=	$(CFLAGS) $(MLXFLAGS) $(LDFLAGS)
+INC_MLX		=	minilibx_macos
 
+CC			=	/usr/bin/gcc
+RM			=	/bin/rm -v
 
-$(NAME) :
-	gcc -c -g -Wall -Werror -Wextra -I libft/includes/ $(SRC)
-	gcc -o $(NAME) -g $(OBJ) -L libft/ -lft
-	/bin/rm -f $(OBJ)
+all			:	$(NAME)
 
-clean:
-	/bin/rm -f $(OBJ)
+$(NAME)		:	$(OBJ)
+	make -C ./libft
+	make -C minilibx_macos
+	$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
+clean		:
+	make -C ./libft clean
+	$(RM) $(OBJ)
 
-fclean:
-	/bin/rm -f $(OBJ)
-	/bin/rm -f $(NAME)
+fclean		:	clean
+	make -C ./libft fclean
+	$(RM) $(NAME)
 
-re: fclean all
+re			:	fclean all
+
+extra       :   FLAGS += $(EXTRAFLAGS)
+extra       :   re
+
+%.o			:	%.c
+	$(CC) $(CFLAGS) $(INC) -c $< -o $@
