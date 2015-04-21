@@ -10,12 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include "minilibx_macos/mlx.h"
 #include "fdf.h"
-#include "get_next_line.h"
 
 /*
 char *get_map(char *map)
@@ -37,7 +32,16 @@ char *get_map(char *map)
 }
 */
 
-void draw(void *mlx, void *win)
+
+void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
+{
+	int pixel;
+
+	pixel = (x * e->sl) + (y *(e->bpp / 8));
+	memcpy(e->data + pixel, &color, e->bpp / 8);
+}
+
+void draw(t_env *e)
 {
 	int x;
 	int y;
@@ -48,45 +52,23 @@ void draw(void *mlx, void *win)
 		y = 100;
 		while (y < 200)
 		{
-			mlx_pixel_put(mlx, win, x, y, 0xFF0000);
+			pxl_to_image(e, x, y, 0xFF0000);
+			//mlx_pixel_put(mlx, win, x, y, 0xFF0000);
 			y++;
 		}
 		x++;
 	}
-}
+	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 
-int expose_hook(t_env *e)
-{
-	draw(e->mlx, e->win);
-	return (0);
 }
-
-int key_hook(int keycode, t_env *e)
-{
-	mlx_pixel_put(e->mlx, e->win, 2, 2, 0xFF0000);
-	printf("key : %d\n", keycode);
-	if (keycode == 53)
-		exit(0);
-	return (0);
-}
-
-int mouse_hook(int button, int x, int y, t_env *e)
-{
-	mlx_pixel_put(e->mlx, e->win, 2, 2, 0xFF0000);
-	printf("mouse : %d (%d:%d)\n", button, x, y);
-	return (0);
-}
-
 
 int main()
 {
 	//char *map;
-	t_env e;
-
 	//map = malloc(100000);
 	//get_map(map);
 	//printf("%s\n", map);
-
+	t_env e;
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "42");
 	mlx_key_hook(e.win, key_hook, &e);

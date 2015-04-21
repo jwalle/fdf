@@ -2,13 +2,14 @@ NAME = fdf
 
 SRC = main.c \
 	  get_next_line.c \
+	  ft_hook.c \
 
 OBJ			=	$(SRC:.c=.o)
 
 INC			=	-I./include -I./libft/include
 LINK		=	-Llibft -lft $(LDFLAGS) $(MLXFLAGS)
 
-CFLAGS		=	-Wall -Wextra -Werror -g3 -pedantic
+CFLAGS		=	-Wall -Wextra -Werror -g3 -g -pedantic
 EXTRAFLAGS	=	--analyze -Weverything -Wno-missing-prototypes -Qunused-arguments
 LDFLAGS		=	-L/usr/X11/lib
 MLXFLAGS	=	-L $(INC_MLX) -lmlx -framework OpenGL -framework AppKit	
