@@ -24,6 +24,8 @@
 
 typedef struct	s_env
 {
+	int			line;
+	int			col;
 	void		*mlx;
 	void		*win;
 	void		*img;
@@ -32,8 +34,7 @@ typedef struct	s_env
 	int 		endian;
 	char		*change;
 	char 		*data;
-
-
+	int			**tab;
 }				t_env;
 
 

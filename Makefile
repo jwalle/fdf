@@ -3,6 +3,7 @@ NAME = fdf
 SRC = main.c \
 	  get_next_line.c \
 	  ft_hook.c \
+	  get_map.c \
 
 OBJ			=	$(SRC:.c=.o)
 
