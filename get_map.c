@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int		nb_space(char *str);
+int		nb_space(char *str)
 {
 	int i;
 	int space;
@@ -16,18 +16,19 @@ int		nb_space(char *str);
 	return (space);
 }
 
-int		*ft_fill(char *str)
+int		*ft_fill(char *str, t_env *e)
 {
 	int *tab;
-	int max;
 	int i;
+	char **tab_line;
 
-	i = -1;
-	max = nb_space(str) + 1);
-	tab = (int*)malloc((max + 1) * (sizeof(*tab))));
-	tab[0] = max;
-	while (++i <= max)
-		tab[i] = ft_atoi(plop);
+	tab_line = ft_strsplit(str, ' ');
+	i = 0;
+	e->col = nb_space(str) + 1;
+	tab = ((int*)malloc((e->col + 1) * (sizeof(*tab))));
+	tab[0] = e->col;
+	while (++i <= e->col)
+		tab[i] = ft_atoi(tab_line[i - 1]);
 	return (tab);
 }
 
@@ -37,7 +38,7 @@ int		ft_line_count(int fd)
 	char *line;
 
 	len = 0;
-	while (get_next_line(fd, &line) == 1);
+	while (get_next_line(fd, &line) == 1)
 	{
 		free(line);
 		len++;
@@ -47,28 +48,27 @@ int		ft_line_count(int fd)
 	return (len);
 }
 
-char *get_map(t_env *e)
+void get_map(t_env *e)
 {
 	int		fd;
 	char	*temp;
 	char 	*str;
-	int		max;
 	int 	i;
 
-	str = "test_maps/pnp_flat.fdf";
-	fd = open(str, O_RDONLY);
-	max = ft_line_count(fd);
-	if (!(e->tab = (int**)malloc(sizeof(int*) * (max + 1))))
-		return (NULL); //ft_error...
-	e->tab[max] = '\0';
+	str = "test_maps/42.fdf";
+	fd = open(str, O_RDONLY);	
+	e->line = ft_line_count(fd);
+	if (!(e->tab = (int**)malloc(sizeof(int*) * (e->line + 1))))
+		return ; //ft_error...
+	e->tab[e->line] = 0;
 	i = 0;
+	fd = open(str, O_RDONLY);
 	while (get_next_line(fd, &temp) == 1)
 	{
-		e->tab[i] = ft_fill(temp, i, e);
+		e->tab[i] = ft_fill(temp, e);
 		i++;
 		free(temp);
 		temp = NULL;
 	}
-	return (NULL);
 }
 

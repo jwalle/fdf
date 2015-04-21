@@ -48,14 +48,35 @@ void	ft_init(t_env *e)
 	e->col = 0;
 }
 
+void	print_map(t_env *e)
+{
+	int i;
+	int j;
+
+
+	i = 0;
+	printf("plop\n");
+	while (i <= e->line - 2)
+	{
+		j = 0;
+		while (j <= e->col)
+		{
+			printf("%d", e->tab[i][j]);
+			printf(" ");
+			j++;
+		}
+		i++;
+		printf("\n");
+	}
+}
 
 int main()
 {
-	//printf("%s\n", map);
 	t_env e;
 
-	ft_init(e);
-	get_map(e);
+	ft_init(&e);	
+	get_map(&e);
+	print_map(&e);
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "42");
 	mlx_key_hook(e.win, key_hook, &e);

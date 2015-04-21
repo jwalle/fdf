@@ -37,7 +37,7 @@ typedef struct	s_env
 	int			**tab;
 }				t_env;
 
-
+void 	get_map(t_env *e);
 int		get_next_line(int const fd, char **line);
 int		expose_hook(t_env *e);
 int		key_hook(int keycode, t_env *e);
