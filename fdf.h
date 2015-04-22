@@ -43,6 +43,6 @@ int		expose_hook(t_env *e);
 int		key_hook(int keycode, t_env *e);
 int		mouse_hook(int button, int x, int y, t_env *e);
 void 	draw(t_env *e);
-
+void	pxl_to_image(t_env *e, int x, int y, uint32_t color);
 
 #endif

@@ -12,32 +12,12 @@
 
 #include "fdf.h"
 
-
 void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 {
 	int pixel;
 
 	pixel = (x * e->sl) + (y *(e->bpp / 8));
 	memcpy(e->data + pixel, &color, e->bpp / 8);
-}
-
-void draw(t_env *e)
-{
-	int x;
-	int y;
-
-	x = 100;
-	while (x < 200)
-	{
-		y = 100;
-		while (y < 200)
-		{
-			pxl_to_image(e, x, y, 0xFF0000);
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
 
 void	ft_init(t_env *e)
