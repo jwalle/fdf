@@ -40,7 +40,6 @@ void draw(t_env *e)
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
 }
 
-
 void	ft_init(t_env *e)
 {
 	e->tab = NULL;
@@ -59,7 +58,8 @@ void	print_map(t_env *e)
 	while (i <= e->line - 2)
 	{
 		j = 0;
-		while (j <= e->col)
+		//while (j <= e->col)
+		while (j <= e->tab[i][0])
 		{
 			printf("%d", e->tab[i][j]);
 			printf(" ");

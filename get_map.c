@@ -1,33 +1,39 @@
 #include "fdf.h"
 
-int		nb_space(char *str)
+int	print_tab(char **tab)
 {
 	int i;
-	int space;
 
 	i = 0;
-	space = 0;
-	while (str[i])
+	//printf("plop2\n");
+	//printf("[[%s]]", tab[6]);
+
+	while (tab[i])
 	{
-		if (str[i] == ' ')
-			space++;
+		
+		//printf("%s", tab[i]);
+		//printf(" - ");
 		i++;
 	}
-	return (space);
+	//printf("plop3\n");
+	return (i);
 }
 
 int		*ft_fill(char *str, t_env *e)
 {
 	int *tab;
 	int i;
+	int j;
 	char **tab_line;
 
 	tab_line = ft_strsplit(str, ' ');
+	j = print_tab(tab_line);
+	if (e->col < j)
+		e->col = j;
 	i = 0;
-	e->col = nb_space(str) + 1;
-	tab = ((int*)malloc((e->col + 1) * (sizeof(*tab))));
-	tab[0] = e->col;
-	while (++i <= e->col)
+	tab = ((int*)malloc((j + 1) * (sizeof(*tab))));
+	tab[0] = j;
+	while (++i <= j)
 		tab[i] = ft_atoi(tab_line[i - 1]);
 	return (tab);
 }
