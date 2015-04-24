@@ -1,35 +1,25 @@
 #include "fdf.h"
 
-void draw_case_one(t_env *e)
+void draw_case_one(t_env *e, t_coord *c)
 {
 	int x;
 
-	x = 0;
-	int x1 = 30;
-	int y1 = 250;
-	int x2 = 60;
-	int y2 = 300;
-
-	x = x1;
-	while (x <= x2)
+	x = c->x1;
+	while (x <= c->x2)
 	{
-		pxl_to_image(e, x, y1 + ((y2 - y1) * (x - x1)) / (x2 - x1), 0xFF0000);
+		pxl_to_image(e, x, c->y1 + ((c->y2 - c->y1) * (x - c->x1)) / (c->x2 - c->x1), 0xFF0000);
 		x++;
 	}
 }
 
-/*
-void draw_line(t_env *e, int x1, int y1, int x2, int y2)
-{
 
-}
-*/
 void draw(t_env *e)
 {
 	int x;
 	int y;
 
 	draw_case_one(e);
+
 	//draw_line(e, 200 );
 	x = 100;
 	while (x < 200)

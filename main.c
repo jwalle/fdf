@@ -57,6 +57,7 @@ int main()
 	ft_init(&e);	
 	get_map(&e);
 	print_map(&e);
+	
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 420, 420, "42");
 	mlx_key_hook(e.win, key_hook, &e);

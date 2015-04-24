@@ -22,6 +22,25 @@
 #include "minilibx_macos/mlx.h"
 #include "get_next_line.h"
 
+
+typedef struct	s_coord
+{
+	int 		x1;
+	int 		x2;
+	int 		y1;
+	int 		y2;
+	int			z1;
+	int			z2;
+	
+}				t_coord;
+
+typedef struct 	s_point
+{
+	t_coord		right;
+	t_coord		down;
+	t_point		*next;
+}				t_point;
+
 typedef struct	s_env
 {
 	int			line;
