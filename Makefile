@@ -5,6 +5,7 @@ SRC = main.c \
 	  ft_hook.c \
 	  get_map.c \
 	  draw.c \
+	  stock.c \
 
 OBJ			=	$(SRC:.c=.o)
 

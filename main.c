@@ -25,6 +25,10 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
+	e->zoom = 30;
+	e->h = 4;
+	e->start_x = 10;
+	e->start_y = 10;
 }
 
 void	print_map(t_env *e)

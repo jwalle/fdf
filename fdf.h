@@ -12,39 +12,45 @@
 
 #ifndef FDF_H
 # define FDF_H
-# define IMG_SIZE_X 10
-# define IMG_SIZE_Y 10
+//# define SIZE_X 10
+//# define SIZE_Y 10
+#define WINDOW_SIZE_X 1
+#define WINDOW_SIZE_Y 1
 
 #include "minilibx_macos/mlx.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "minilibx_macos/mlx.h"
+//#include "minilibx_macos/mlx.h"
 #include "get_next_line.h"
 
 
 typedef struct	s_coord
 {
-	int 		x1;
-	int 		x2;
-	int 		y1;
-	int 		y2;
-	int			z1;
-	int			z2;
+	int 		x;
+	int 		y;
+	int			z;
+	int			k;
+	int			s;
 	
 }				t_coord;
 
-typedef struct 	s_point
+typedef struct 		s_point
 {
-	t_coord		right;
-	t_coord		down;
-	t_point		*next;
-}				t_point;
+	t_coord			*origin;
+	t_coord			*right;
+	t_coord			*down;
+	struct s_point	*next;
+}					t_point;
 
 typedef struct	s_env
 {
+	int			start_x;
+	int			start_y;
 	int			line;
 	int			col;
+	int			zoom;
+	int			h;
 	void		*mlx;
 	void		*win;
 	void		*img;
@@ -54,6 +60,8 @@ typedef struct	s_env
 	char		*change;
 	char 		*data;
 	int			**tab;
+	int			SIZE_Y;
+	int			SIZE_X;
 }				t_env;
 
 void 	get_map(t_env *e);
@@ -63,7 +71,11 @@ int		key_hook(int keycode, t_env *e);
 int		mouse_hook(int button, int x, int y, t_env *e);
 void 	draw(t_env *e);
 void	pxl_to_image(t_env *e, int x, int y, uint32_t color);
-void 	draw_case_one(t_env *e);
-
+void 	draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
+t_point	*ll_stock(t_env *e);
+t_point	*ll_copy_new(t_point *head, t_env *e, int i, int j);
+t_point	*ll_copy_cur(t_point *cur, t_env *e, int i, int j);
+t_coord	*get_position(int x, int y, int z);
+void	select_draw(t_coord *ori, t_coord* dest, t_env *e);	
 
 #endif

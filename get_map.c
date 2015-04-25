@@ -88,5 +88,9 @@ void get_map(t_env *e)
 		free(temp);
 		temp = NULL;
 	}
+	//e->SIZE_X = (420 / e->col);
+	//e->SIZE_Y = (420 / e->line);
+	e->SIZE_X = 20;
+	e->SIZE_Y = 20;
 }
 

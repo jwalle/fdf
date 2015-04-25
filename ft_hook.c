@@ -14,7 +14,7 @@
 
 int expose_hook(t_env *e)
 {
-	e->img = mlx_new_image(e->mlx, 400, 400);
+	e->img = mlx_new_image(e->mlx, 420, 420);
 	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->sl, &e->endian);
 	draw(e);
 	return (0);
