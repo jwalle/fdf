@@ -25,10 +25,13 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 30;
-	e->h = 4;
-	e->start_x = 10;
-	e->start_y = 10;
+	e->zoom = 20;
+	e->h = 1;
+	e->start_x = 20;
+	e->start_y = 20;
+	e->z = 0.5;
+	e->w = 2;
+	e->g = 2;
 }
 
 void	print_map(t_env *e)
@@ -63,7 +66,7 @@ int main()
 	print_map(&e);
 	
 	e.mlx = mlx_init();
-	e.win = mlx_new_window(e.mlx, 420, 420, "42");
+	e.win = mlx_new_window(e.mlx, 1000, 1000, "42");
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_mouse_hook(e.win, mouse_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);

@@ -14,8 +14,8 @@
 # define FDF_H
 //# define SIZE_X 10
 //# define SIZE_Y 10
-#define WINDOW_SIZE_X 1
-#define WINDOW_SIZE_Y 1
+#define WINDOW_SIZE_X 1000
+#define WINDOW_SIZE_Y 1000
 
 #include "minilibx_macos/mlx.h"
 #include <unistd.h>
@@ -27,8 +27,8 @@
 
 typedef struct	s_coord
 {
-	int 		x;
-	int 		y;
+	double 		x;
+	double 		y;
 	int			z;
 	int			k;
 	int			s;
@@ -50,7 +50,7 @@ typedef struct	s_env
 	int			line;
 	int			col;
 	int			zoom;
-	int			h;
+	double		h;
 	void		*mlx;
 	void		*win;
 	void		*img;
@@ -62,6 +62,9 @@ typedef struct	s_env
 	int			**tab;
 	int			SIZE_Y;
 	int			SIZE_X;
+	double		w;
+	double		z;
+	double		g;
 }				t_env;
 
 void 	get_map(t_env *e);

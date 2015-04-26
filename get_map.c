@@ -73,7 +73,7 @@ void get_map(t_env *e)
 	char 	*str;
 	int 	i;
 
-	str = "test_maps/42.fdf";
+	str = "test_maps/pylone.fdf";
 	fd = open(str, O_RDONLY);	
 	e->line = ft_line_count(fd);
 	if (!(e->tab = (int**)malloc(sizeof(int*) * (e->line + 1))))
@@ -93,4 +93,3 @@ void get_map(t_env *e)
 	e->SIZE_X = 20;
 	e->SIZE_Y = 20;
 }
-

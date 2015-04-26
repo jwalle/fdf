@@ -12,7 +12,7 @@ t_point	*ll_stock(t_env *e)
 	i = 0;
 	while (i < e->line - 2)
 	{
-		j = 0;
+		j = 1;
 		while (j < e->tab[i][0] - 2)
 		{
 			if (head == NULL)
