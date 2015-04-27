@@ -11,16 +11,24 @@ uint32_t	ft_get_color(int z)
 {
 	uint32_t color;
 
-	if (z < 0)
-		color = 0xFFA500;
-	if (z == 0)
-		color = 0xFFFFFF;
-	if (z > 0 && z < 10)
-		color = 0x0000FF;
-	if (z >= 10)
-		color = 0xFF0000;
-	return (color);
 
+	if (z < 0)
+		color = 0x71ABD8;
+	if (z == 0)
+		color = 0xF5F4F2;
+	if (z > 0 && z <= 5)
+		color = 0xACD0A5;
+	if (z > 5 && z <= 10)
+		color = 0xA8C68F;
+	if (z > 10 && z <= 15)
+		color = 0xEFEBC0;
+	if (z > 15 && z <= 20)
+		color = 0xCAB982;
+	if (z > 20 && z <= 25)
+		color = 0xAA8753;
+	if (z > 25)
+		color = 0xCAC3B8;
+	return (color);
 }
 
 void draw_case_one(t_env *e, t_coord *ori, t_coord *dest)

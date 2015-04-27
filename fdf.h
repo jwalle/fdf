@@ -69,7 +69,7 @@ typedef struct	s_env
 	double		g;
 }				t_env;
 
-void 	get_map(t_env *e);
+void 	get_map(t_env *e, char *str);
 int		get_next_line(int const fd, char **line);
 int		expose_hook(t_env *e);
 int		key_hook(int keycode, t_env *e);

@@ -15,7 +15,6 @@ t_point	*ll_stock(t_env *e)
 		j = 1;
 		while (j <= e->tab[0][0])
 		{
-			printf("stock = %d, %d\n", i, j);
 			if (head == NULL)
 			{
 				head = ll_copy_new(head, e, i, j);
@@ -76,11 +75,9 @@ t_coord	*get_position(int x, int y, int z, t_env *e)
 	t_coord *new;
 
 	new = (t_coord*)malloc(sizeof(t_coord));
-	new->x = x + 1;
+	new->x = (x + 1);
 	new->y = y;
 	new->z = z;
-	new->i = x;
-	new->j = y;
 
 	new->x = (new->x * e->zoom) + (new->y * e->zoom) + e->start_y;
 	new->x /= e->w;

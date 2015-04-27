@@ -52,20 +52,18 @@ int		ft_line_count(int fd)
 		free(line);
 		len++;
 	}
-	//if (line)
-	//	len++;
 	printf("%d\n", len);
 	return (len);
 }
 
-void get_map(t_env *e)
+void get_map(t_env *e, char *str)
 {
 	int		fd;
 	char	*temp;
-	char 	*str;
+	//char 	*str;
 	int 	i;
 
-	str = "test_maps/pylone.fdf";
+	//str = "test_maps/elem.fdf";
 	fd = open(str, O_RDONLY);	
 	e->line = ft_line_count(fd);
 	if (!(e->tab = (int**)malloc(sizeof(int*) * (e->line + 1))))

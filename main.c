@@ -16,11 +16,8 @@ void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 {
 	int pixel;
 
-	//if (x < e->line && y < e->col)
-	//{
 		pixel = (x * e->sl) + (y *(e->bpp / 8));
 		memcpy(e->data + pixel, &color, e->bpp / 8);
-	//}
 }
 
 void	ft_init(t_env *e)
@@ -28,7 +25,7 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 20;
+	e->zoom = 5;
 	e->h = 1;
 	e->start_x = 20;
 	e->start_y = 20;
@@ -37,36 +34,13 @@ void	ft_init(t_env *e)
 	e->g = 2;
 }
 
-void	print_map(t_env *e)
-{
-	int i;
-	int j;
-
-
-	i = 0;
-	printf("plop\n");
-	while (i <= e->line - 2)
-	{
-		j = 0;
-		//while (j <= e->col)
-		while (j <= e->tab[i][0])
-		{
-			printf("%d", e->tab[i][j]);
-			printf(" ");
-			j++;
-		}
-		i++;
-		printf("\n");
-	}
-}
-
-int main()
+int main(int ac, char **av)
 {
 	t_env e;
 
-	ft_init(&e);	
-	get_map(&e);
-	print_map(&e);
+	ft_init(&e);
+	if (ac == 2)	
+		get_map(&e, av[1]);
 	
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, 1000, 1000, "42");
