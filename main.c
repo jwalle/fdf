@@ -25,13 +25,14 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 5;
+	e->zoom = 10;
 	e->h = 1;
 	e->start_x = 20;
 	e->start_y = 20;
-	e->z = 0.5;
+	e->z = -1;
 	e->w = 2;
 	e->g = 2;
+	e->a = 2;
 }
 
 int main(int ac, char **av)

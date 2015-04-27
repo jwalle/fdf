@@ -80,8 +80,8 @@ t_coord	*get_position(int x, int y, int z, t_env *e)
 	new->z = z;
 
 	new->x = (new->x * e->zoom) + (new->y * e->zoom) + e->start_y;
-	new->x /= e->w;
-	new->y = ((e->h / 2.0) * (new->y * e->zoom) + e->start_x);
+	new->x *= e->w;
+	new->y = ((e->h / 0.5) * (new->y * e->zoom) + e->start_x);
 	new->y *= e->g;
 	new->x = new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);

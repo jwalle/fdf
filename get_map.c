@@ -60,10 +60,8 @@ void get_map(t_env *e, char *str)
 {
 	int		fd;
 	char	*temp;
-	//char 	*str;
 	int 	i;
 
-	//str = "test_maps/elem.fdf";
 	fd = open(str, O_RDONLY);	
 	e->line = ft_line_count(fd);
 	if (!(e->tab = (int**)malloc(sizeof(int*) * (e->line + 1))))

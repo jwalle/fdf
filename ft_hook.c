@@ -31,13 +31,13 @@ int key_hook(int keycode, t_env *e)
 	if (keycode == 78)
 		e->zoom -= 5;
 	if (keycode == 124)
-		e->start_x += 20;
+		e->start_x += 40;
 	if (keycode == 123)
-		e->start_x -= 20;
+		e->start_x -= 40;
 	if (keycode == 126)
-		e->start_y += 20;
+		e->start_y += 40;
 	if (keycode == 125)
-		e->start_y -= 20;
+		e->start_y -= 40;
 	if (keycode == 116)
 		e->h += 0.1;
 	if (keycode == 121)
@@ -54,6 +54,10 @@ int key_hook(int keycode, t_env *e)
 		e->g += 0.1;
 	if (keycode == 117)
 		e->g -= 0.1;
+	if (keycode == 0)
+		e->a += 0.1;
+	if (keycode == 2)
+		e->a -= 0.1;
 	expose_hook(e);
 	return (0);
 }

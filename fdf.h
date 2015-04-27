@@ -67,6 +67,7 @@ typedef struct	s_env
 	double		w;
 	double		z;
 	double		g;
+	double		a;
 }				t_env;
 
 void 	get_map(t_env *e, char *str);

@@ -50,7 +50,7 @@ void draw_case_two(t_env *e, t_coord *ori, t_coord *dest)
 	x = dest->x;
 	while (x <= ori->x && x < WINDOW_SIZE_X)
 	{
-		pxl_to_image(e, x, ori->y + ((dest->y - ori->y) * (x - ori->x)) / (dest->x - ori->x),	ft_get_color(dest->z));
+		pxl_to_image(e, x, ori->y + ((dest->y - ori->y) * (x - ori->x)) / (dest->x - ori->x), ft_get_color(dest->z));
 		x++;
 	}
 }
