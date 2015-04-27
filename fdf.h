@@ -32,6 +32,8 @@ typedef struct	s_coord
 	int			z;
 	int			k;
 	int			s;
+	int			i;
+	int			j;
 	
 }				t_coord;
 
@@ -78,7 +80,7 @@ void 	draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
 t_point	*ll_stock(t_env *e);
 t_point	*ll_copy_new(t_point *head, t_env *e, int i, int j);
 t_point	*ll_copy_cur(t_point *cur, t_env *e, int i, int j);
-t_coord	*get_position(int x, int y, int z);
+t_coord	*get_position(int x, int y, int z, t_env *e);
 void	select_draw(t_coord *ori, t_coord* dest, t_env *e);	
 
 #endif

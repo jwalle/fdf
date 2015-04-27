@@ -16,8 +16,11 @@ void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 {
 	int pixel;
 
-	pixel = (x * e->sl) + (y *(e->bpp / 8));
-	memcpy(e->data + pixel, &color, e->bpp / 8);
+	//if (x < e->line && y < e->col)
+	//{
+		pixel = (x * e->sl) + (y *(e->bpp / 8));
+		memcpy(e->data + pixel, &color, e->bpp / 8);
+	//}
 }
 
 void	ft_init(t_env *e)

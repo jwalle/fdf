@@ -6,7 +6,7 @@
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/22 13:12:26 by jwalle            #+#    #+#             */
-/*   Updated: 2015/04/22 13:12:28 by jwalle           ###   ########.fr       */
+/*   Updated: 2015/04/27 14:24:44 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,8 @@ int	print_tab(char **tab)
 	int i;
 
 	i = 0;
-	//printf("plop2\n");
-	//printf("[[%s]]", tab[6]);
-
 	while (tab[i])
-	{
-		
-		//printf("%s", tab[i]);
-		//printf(" - ");
 		i++;
-	}
-	//printf("plop3\n");
 	return (i);
 }
 
@@ -61,8 +52,9 @@ int		ft_line_count(int fd)
 		free(line);
 		len++;
 	}
-	if (line)
-		len++;
+	//if (line)
+	//	len++;
+	printf("%d\n", len);
 	return (len);
 }
 
@@ -93,3 +85,4 @@ void get_map(t_env *e)
 	e->SIZE_X = 20;
 	e->SIZE_Y = 20;
 }
+
