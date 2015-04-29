@@ -37,7 +37,10 @@ int		*ft_fill(char *str, t_env *e)
 	tab = ((int*)malloc((j + 1) * (sizeof(*tab))));
 	tab[0] = j;
 	while (++i <= j)
+	{
 		tab[i] = ft_atoi(tab_line[i - 1]);
+		free(tab_line[i - 1]);
+	}
 	return (tab);
 }
 
@@ -52,7 +55,6 @@ int		ft_line_count(int fd)
 		free(line);
 		len++;
 	}
-	printf("%d\n", len);
 	return (len);
 }
 
@@ -76,9 +78,12 @@ void get_map(t_env *e, char *str)
 		free(temp);
 		temp = NULL;
 	}
+	printf("test get_map\n");
 	//e->SIZE_X = (420 / e->col);
 	//e->SIZE_Y = (420 / e->line);
 	e->SIZE_X = 20;
 	e->SIZE_Y = 20;
+	//e->start_x = WINDOW_SIZE_X / (e->line * 2);
+	//e->start_y = WINDOW_SIZE_Y / (e->col * 2);
 }
 

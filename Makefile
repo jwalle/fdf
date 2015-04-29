@@ -6,6 +6,8 @@ SRC = main.c \
 	  get_map.c \
 	  draw.c \
 	  stock.c \
+	  free_list.c \
+	  ft_get_color.c \
 
 OBJ			=	$(SRC:.c=.o)
 

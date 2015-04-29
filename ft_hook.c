@@ -6,7 +6,7 @@
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/04/22 13:12:19 by jwalle            #+#    #+#             */
-/*   Updated: 2015/04/22 13:12:21 by jwalle           ###   ########.fr       */
+/*   Updated: 2015/04/27 19:17:18 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ int expose_hook(t_env *e)
 
 int key_hook(int keycode, t_env *e)
 {
-	mlx_pixel_put(e->mlx, e->win, 2, 2, 0xFF0000);
 	printf("key : %d\n", keycode);
 	if (keycode == 53)
+	{
+		free_tab_int(e->tab);
+		mlx_destroy_image(e->mlx, e->img);
 		exit(0);
+	}
 	if (keycode == 69)
-		e->zoom += 5;
+		e->zoom += 2;
 	if (keycode == 78)
-		e->zoom -= 5;
+		e->zoom -= 2;
 	if (keycode == 124)
 		e->start_x += 40;
 	if (keycode == 123)
@@ -46,7 +49,7 @@ int key_hook(int keycode, t_env *e)
 		e->z += 1;
 	if (keycode == 43)
 		e->z -= 1;
-	if (keycode == 115)
+	if (keycode == 115 )
 		e->w += 0.1;
 	if (keycode == 119)
 		e->w -= 0.1;
@@ -58,9 +61,18 @@ int key_hook(int keycode, t_env *e)
 		e->a += 0.1;
 	if (keycode == 2)
 		e->a -= 0.1;
+	if (keycode == 18)
+		e->color_set = 1;
+	if (keycode == 19)
+		e->color_set = 2;
+	if (keycode == 20)
+		e->color_set = 3;
+	mlx_destroy_image(e->mlx, e->img);
 	expose_hook(e);
 	return (0);
 }
+
+/* A retirer */
 
 int mouse_hook(int button, int x, int y, t_env *e)
 {
