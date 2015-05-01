@@ -14,10 +14,14 @@
 
 void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 {
-		int pixel;
+	int pixel;
 
+	pixel = 1;
+	if (x > 0 && x < WINDOW_SIZE_X && y > 0 && y < WINDOW_SIZE_Y)
+	{
 		pixel = (x * e->sl) + (y *(e->bpp / 8));
 		memcpy(e->data + pixel, &color, e->bpp / 8); //FT_MEMCPY
+	}
 }
 
 void	ft_init(t_env *e)
@@ -44,7 +48,7 @@ int main(int ac, char **av)
 	if (ac == 2)
 		get_map(&e, av[1]);
 	e.mlx = mlx_init();
-	e.win = mlx_new_window(e.mlx, 1000, 1000, "42");
+	e.win = mlx_new_window(e.mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y, "42");
 	mlx_key_hook(e.win, key_hook, &e);
 	mlx_expose_hook(e.win, expose_hook, &e);
 	mlx_loop(e.mlx);

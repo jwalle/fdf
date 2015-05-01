@@ -39,8 +39,10 @@ int		*ft_fill(char *str, t_env *e)
 	while (++i <= j)
 	{
 		tab[i] = ft_atoi(tab_line[i - 1]);
-		free(tab_line[i - 1]);
+		if (!tab[i])
+			tab[i] += 1;
 	}
+	//free_tab_char(tab_line);
 	return (tab);
 }
 

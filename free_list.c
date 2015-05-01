@@ -22,7 +22,20 @@ void free_list(t_point *current)
 	printf("free t_point\n");
 }
 
-void free_tab_int(int **tab)
+void	free_tab_char(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+void	free_tab_int(int **tab)
 {
 	int i;
 

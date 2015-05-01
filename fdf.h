@@ -12,8 +12,6 @@
 
 #ifndef FDF_H
 # define FDF_H
-//# define SIZE_X 10
-//# define SIZE_Y 10
 #define WINDOW_SIZE_X 1000
 #define WINDOW_SIZE_Y 1000
 
@@ -21,7 +19,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
-//#include "minilibx_macos/mlx.h"
 #include "get_next_line.h"
 
 
@@ -87,6 +84,7 @@ t_coord	*get_position(int x, int y, int z, t_env *e);
 void	select_draw(t_coord *ori, t_coord* dest, t_env *e);
 void 	free_list(t_point *current);
 void 	free_tab_int(int **tab);
+void	free_tab_char(char **tab);
 
 
 #endif

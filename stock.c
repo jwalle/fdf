@@ -30,7 +30,7 @@ t_point	*ll_stock(t_env *e)
 		}
 		i++;
 	}
-	printf("test stock\n");
+	//printf("test stock\n");
 	return (head);
 }
 
@@ -41,6 +41,7 @@ t_point	*ll_copy_new(t_point *head, t_env *e, int i, int j)
 	new = (t_point*)malloc(sizeof(t_point));
 	new->next = head;
 	head = new;
+	//new->nb_col = e->tab[i][0];
 	new->origin = get_position(i, j, e->tab[i][j], e);
 	new->right = get_position(i + 1, j, e->tab[i + 1][j], e);
 	new->down = get_position(i, j + 1, e->tab[i][j + 1], e);
@@ -56,17 +57,23 @@ t_point	*ll_copy_cur(t_point *cur, t_env *e, int i, int j)
 	new->next = NULL;
 	
 	if (i < e->line)
+	{
 		new->origin = get_position(i, j, e->tab[i][j], e);
-	
-	if (i < e->line - 1)
-		new->right = get_position(i + 1, j, e->tab[i + 1][j], e);
+		if (j < e->tab[i][0] && e->tab[i][j])
+			new->down = get_position(i, j + 1, e->tab[i][j + 1], e);
+		else
+			new->down = NULL;
+		if ((i < (e->line - 1)) && e->tab[i + 1][j])
+			new->right = get_position(i + 1, j, e->tab[i + 1][j], e);
+		else
+			new->right = NULL;
+	}
 	else
+	{
+		new->origin = NULL;
 		new->right = NULL;
-	
-	if (i < e->line && j < e->col)
-		new->down = get_position(i, j + 1, e->tab[i][j + 1], e);
-	else
 		new->down = NULL;
+	}
 	return (new);
 }
 
@@ -80,9 +87,6 @@ t_coord	*get_position(int x, int y, int z, t_env *e)
 	new->x = (x + 1);
 	new->y = y;
 	new->z = z;
-
-	printf("x = %d\n", e->start_x);
-	printf("y = %d\n", e->start_y);
 
 	new->x = ((new->x * e->zoom) + (new->y * e->zoom) + e->start_y);
 	//new->x = ((x + 1) * e->zoom) + (y * e->zoom) + e->start_y;

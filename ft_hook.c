@@ -25,7 +25,7 @@ int key_hook(int keycode, t_env *e)
 	printf("key : %d\n", keycode);
 	if (keycode == 53)
 	{
-		free_tab_int(e->tab);
+		//free_tab_int(e->tab);
 		mlx_destroy_image(e->mlx, e->img);
 		exit(0);
 	}

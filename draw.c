@@ -12,7 +12,7 @@ void draw_case_one(t_env *e, t_coord *ori, t_coord *dest)
 	int x;
 
 	x = ori->x;
-	while (x <= dest->x && x < WINDOW_SIZE_X)
+	while (x <= dest->x)
 	{
 		pxl_to_image(e, x, ori->y + ((dest->y - ori->y) * (x - ori->x)) / (dest->x - ori->x), ft_get_color(dest->z , e));
 		x++;
@@ -24,7 +24,7 @@ void draw_case_two(t_env *e, t_coord *ori, t_coord *dest)
 	int x;
 
 	x = dest->x;
-	while (x <= ori->x && x < WINDOW_SIZE_X)
+	while (x <= ori->x)
 	{
 		pxl_to_image(e, x, ori->y + ((dest->y - ori->y) * (x - ori->x)) / (dest->x - ori->x), ft_get_color(dest->z, e));
 		x++;
@@ -36,7 +36,7 @@ void draw_case_three(t_env *e, t_coord *ori, t_coord *dest)
 	int x;
 
 	x = ori->y;
-	while (x <= dest->y && x < WINDOW_SIZE_X)
+	while (x <= dest->y)
 	{
 		pxl_to_image(e,ori->x + ((dest->x - ori->x) * (x - ori->y)) / (dest->y - ori->y), x, ft_get_color(dest->z, e));
 		x++;
@@ -48,7 +48,7 @@ void draw_case_four(t_env *e, t_coord *ori, t_coord *dest)
 	int x;
 
 	x = dest->y;
-	while (x <= ori->y && x < WINDOW_SIZE_X)
+	while (x <= ori->y)
 	{
 		pxl_to_image(e, ori->x + ((dest->x - ori->x) * (x - ori->y)) / (dest->y - ori->y), x, ft_get_color(dest->z, e));
 		x++;
@@ -80,8 +80,8 @@ void draw(t_env *e)
 	//t_point *tmp;
 
 	all = ll_stock(e);
-	while (all != NULL)
-	{		
+	while (all->origin != NULL)
+	{	
 		if (all->right != NULL)
 			select_draw(all->origin, all->right, e);
 		if (all->down != NULL)
