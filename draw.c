@@ -55,7 +55,6 @@ void draw_case_four(t_env *e, t_coord *ori, t_coord *dest)
 	}
 }
 
-
 void	select_draw(t_coord *ori, t_coord* dest, t_env *e)
 {
 	if ((absolute(dest->x - ori->x)) >= (absolute(dest->y - ori->y)))

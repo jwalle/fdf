@@ -30,10 +30,10 @@ void	ft_init(t_env *e)
 	e->line = 0;
 	e->col = 0;
 	e->zoom = 12;
-	e->h = 1;
+	e->h = 2;
 	e->start_x = 30;
 	e->start_y = 30;
-	e->z = -1;
+	e->z = -8;
 	e->w = 0.5;
 	e->g = 0.5;
 	e->a = 2;

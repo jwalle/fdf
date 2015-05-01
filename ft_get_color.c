@@ -45,6 +45,7 @@ uint32_t	ft_get_color2(int z, t_env *e)
 
 uint32_t	ft_get_color(int z, t_env *e)
 {
+	z -= 1;
 	if (z < 0 && e->color_set == 1)
 		return(0x0054E5);
 	if (z == 0 && e->color_set == 1)
@@ -60,6 +61,6 @@ uint32_t	ft_get_color(int z, t_env *e)
 	if (z > 8 && z <= 10 && e->color_set == 1)
 		return (0xCE200B5);
 	if (z > 10 && e->color_set == 1)
-		return (0xC240000);
+		return (0xab020a);
 	return(ft_get_color2(z, e));
 } //carto gradient.
