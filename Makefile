@@ -30,6 +30,8 @@ $(NAME)		:	$(OBJ)
 	make -C ./libft
 	make -C minilibx_macos
 	$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
+	make clean
+
 clean		:
 	make -C ./libft clean
 	$(RM) $(OBJ)
