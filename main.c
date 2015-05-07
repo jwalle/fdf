@@ -20,7 +20,7 @@ void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 	if (x > 0 && x < WINDOW_SIZE_X && y > 0 && y < WINDOW_SIZE_Y)
 	{
 		pixel = (x * e->sl) + (y *(e->bpp / 8));
-		memcpy(e->data + pixel, &color, e->bpp / 8); //FT_MEMCPY
+		ft_memcpy(e->data + pixel, &color, e->bpp / 8); //FT_MEMCPY
 	}
 }
 
@@ -29,11 +29,11 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 12;
+	e->zoom = 2;
 	e->h = 2;
-	e->start_x = 30;
-	e->start_y = 30;
-	e->z = -8;
+	e->start_x = 10;
+	e->start_y = 10;
+	e->z = -4;
 	e->w = 0.5;
 	e->g = 0.5;
 	e->a = 2;

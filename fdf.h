@@ -12,8 +12,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-#define WINDOW_SIZE_X 1000
-#define WINDOW_SIZE_Y 1000
+#define WINDOW_SIZE_X 1500
+#define WINDOW_SIZE_Y 2000
 
 #include "minilibx_macos/mlx.h"
 #include <unistd.h>

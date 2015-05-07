@@ -80,6 +80,8 @@ void get_map(t_env *e, char *str)
 		free(temp);
 		temp = NULL;
 	}
-	printf("test get_map\n");
+	//e->start_x = (WINDOW_SIZE_X / e->line) * 5;
+	//e->start_y = (WINDOW_SIZE_Y / e->tab[0][0]) * 5;
+	//e->zoom = (e->line * e->col) / WINDOW_SIZE_Y;
 }
 
