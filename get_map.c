@@ -42,7 +42,7 @@ int		*ft_fill(char *str, t_env *e)
 		if (!tab[i])
 			tab[i] += 1;
 	}
-	//free_tab_char(tab_line);
+	free_tab_char(tab_line);
 	return (tab);
 }
 
@@ -81,11 +81,5 @@ void get_map(t_env *e, char *str)
 		temp = NULL;
 	}
 	printf("test get_map\n");
-	//e->SIZE_X = (420 / e->col);
-	//e->SIZE_Y = (420 / e->line);
-	e->SIZE_X = 20;
-	e->SIZE_Y = 20;
-	//e->start_x = WINDOW_SIZE_X / (e->line * 2);
-	//e->start_y = WINDOW_SIZE_Y / (e->col * 2);
 }
 

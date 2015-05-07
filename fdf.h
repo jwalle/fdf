@@ -31,16 +31,7 @@ typedef struct	s_coord
 	int			s;
 	int			i;
 	int			j;
-	
 }				t_coord;
-
-typedef struct 		s_point
-{
-	t_coord			*origin;
-	t_coord			*right;
-	t_coord			*down;
-	struct s_point	*next;
-}					t_point;
 
 typedef struct	s_env
 {
@@ -68,23 +59,18 @@ typedef struct	s_env
 	double		a;
 }				t_env;
 
-void 	get_map(t_env *e, char *str);
-int		get_next_line(int const fd, char **line);
-int		expose_hook(t_env *e);
-int		key_hook(int keycode, t_env *e);
-int		mouse_hook(int button, int x, int y, t_env *e);
-void 	draw(t_env *e);
-void	pxl_to_image(t_env *e, int x, int y, uint32_t color);
-void 	draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
+void		get_map(t_env *e, char *str);
+int			get_next_line(int const fd, char **line);
+int			expose_hook(t_env *e);
+int			key_hook(int keycode, t_env *e);
+void		draw(t_env *e);
+void		pxl_to_image(t_env *e, int x, int y, uint32_t color);
+void		draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
 uint32_t	ft_get_color(int z, t_env *e);
-t_point	*ll_stock(t_env *e);
-t_point	*ll_copy_new(t_point *head, t_env *e, int i, int j);
-t_point	*ll_copy_cur(t_point *cur, t_env *e, int i, int j);
-t_coord	*get_position(int x, int y, int z, t_env *e);
-void	select_draw(t_coord *ori, t_coord* dest, t_env *e);
-void 	free_list(t_point *current);
-void 	free_tab_int(int **tab);
-void	free_tab_char(char **tab);
+t_coord		*get_position(int x, int y, int z, t_env *e);
+void		select_draw(t_coord *ori, t_coord* dest, t_env *e);
+void		free_tab_int(int **tab);
+void		free_tab_char(char **tab);
 
 
 #endif

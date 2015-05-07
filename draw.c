@@ -57,45 +57,45 @@ void draw_case_four(t_env *e, t_coord *ori, t_coord *dest)
 
 void	select_draw(t_coord *ori, t_coord* dest, t_env *e)
 {
-	if ((absolute(dest->x - ori->x)) >= (absolute(dest->y - ori->y)))
+	if (dest != NULL && ori != NULL)
 	{
-		if(ori->x < dest->x)
-			draw_case_one(e, ori, dest);
+		if ((absolute(dest->x - ori->x)) >= (absolute(dest->y - ori->y)))
+		{
+			if(ori->x < dest->x)
+				draw_case_one(e, ori, dest);
+			else
+				draw_case_two(e, ori, dest);
+		}
 		else
-			draw_case_two(e, ori, dest);
-	}
-	else
-	{
-		if (ori->y < dest->y)
-			draw_case_three(e, ori, dest);
-		else
-			draw_case_four(e, ori, dest);
+		{
+			if (ori->y < dest->y)
+				draw_case_three(e, ori, dest);
+			else
+				draw_case_four(e, ori, dest);
+		}
+		free(ori);
+		free(dest);
 	}
 }
 
 void draw(t_env *e)
 {
-	t_point *all;
-	//t_point *tmp;
+	int i;
+	int j;
 
-	all = ll_stock(e);
-	while (all->origin != NULL)
-	{	
-		if (all->right != NULL)
-			select_draw(all->origin, all->right, e);
-		if (all->down != NULL)
-			select_draw(all->origin, all->down, e);
-		//tmp = all;
-		all = all->next;
-		//if (tmp->origin != NULL)
-		//	free(tmp->origin);
-		//if (tmp->right != NULL)
-		//	free(tmp->right);
-		//if (tmp->down != NULL)
-		//	free(tmp->down);
-		//tmp = NULL;
-		//free(tmp);
+	i = 0;
+	while (i <= e->line - 1)
+	{
+		j = 1;
+		while (j <= e->tab[0][0])
+		{
+			if (j < e->tab[0][0])
+				select_draw(get_position(i, j, e->tab[i][j], e), get_position(i, j + 1, e->tab[i][j + 1], e), e);
+			if (i < e->line - 1)
+				select_draw(get_position(i, j, e->tab[i][j], e), get_position(i + 1, j, e->tab[i + 1][j], e), e);
+			j++;
+		}
+		i++;
 	}
 	mlx_put_image_to_window(e->mlx, e->win, e->img, 0, 0);
-	//free_list(all);
 }
