@@ -8,6 +8,7 @@ SRC = main.c \
 	  stock.c \
 	  free_list.c \
 	  ft_get_color.c \
+	  draw_case.c \
 
 OBJ			=	$(SRC:.c=.o)
 
@@ -36,7 +37,8 @@ clean		:
 	make -C ./libft clean
 	$(RM) $(OBJ)
 
-fclean		:	clean
+fclean		:	
+	clean
 	make -C ./libft fclean
 	$(RM) $(NAME)
 

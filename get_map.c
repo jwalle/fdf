@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-int	print_tab(char **tab)
+int		print_tab(char **tab)
 {
 	int i;
 
@@ -24,10 +24,10 @@ int	print_tab(char **tab)
 
 int		*ft_fill(char *str, t_env *e)
 {
-	int *tab;
-	int i;
-	int j;
-	char **tab_line;
+	int		*tab;
+	int		i;
+	int		j;
+	char	**tab_line;
 
 	tab_line = ft_strsplit(str, ' ');
 	j = print_tab(tab_line);
@@ -48,8 +48,8 @@ int		*ft_fill(char *str, t_env *e)
 
 int		ft_line_count(int fd)
 {
-	int len;
-	char *line;
+	int		len;
+	char	*line;
 
 	len = 0;
 	while (get_next_line(fd, &line) == 1)
@@ -60,19 +60,21 @@ int		ft_line_count(int fd)
 	return (len);
 }
 
-void get_map(t_env *e, char *str)
+int		get_map(t_env *e, char *str)
 {
 	int		fd;
 	char	*temp;
-	int 	i;
+	int		i;
 
-	fd = open(str, O_RDONLY);	
+	if ((fd = open(str, O_RDONLY)) < 0)
+		return (0);
 	e->line = ft_line_count(fd);
 	if (!(e->tab = (int**)malloc(sizeof(int*) * (e->line + 1))))
-		return ; //ft_error...
+		return (0);
 	e->tab[e->line] = 0;
 	i = 0;
-	fd = open(str, O_RDONLY);
+	if ((fd = open(str, O_RDONLY)) < 0)
+		return (0);
 	while (get_next_line(fd, &temp) == 1)
 	{
 		e->tab[i] = ft_fill(temp, e);
@@ -80,6 +82,7 @@ void get_map(t_env *e, char *str)
 		free(temp);
 		temp = NULL;
 	}
-	printf("test get_map\n");
+	if (!e->tab)
+		return (0);
+	return (1);
 }
-

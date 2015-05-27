@@ -14,7 +14,7 @@
 
 int expose_hook(t_env *e)
 {
-	e->img = mlx_new_image(e->mlx, 1000, 1000);
+	e->img = mlx_new_image(e->mlx, WINDOW_SIZE_X, WINDOW_SIZE_Y);
 	e->data = mlx_get_data_addr(e->img, &e->bpp, &e->sl, &e->endian);
 	draw(e);
 	return (0);
@@ -48,7 +48,11 @@ int key_hook(int keycode, t_env *e)
 		e->z += 1;
 	if (keycode == 43)
 		e->z -= 1;
-	if (keycode == 115 )
+	if (keycode == 6)
+		e->z += 0.1;
+	if (keycode == 7)
+		e->z -= 0.1;
+	if (keycode == 115)
 		e->w += 0.1;
 	if (keycode == 119)
 		e->w -= 0.1;
@@ -66,6 +70,8 @@ int key_hook(int keycode, t_env *e)
 		e->color_set = 2;
 	if (keycode == 20)
 		e->color_set = 3;
+	printf("x = %d,y = %d, zoom = %d\n", e->start_x, e->start_y, e->zoom);
+	printf("col = %d, line = %d\n", e->col, e->line);
 	mlx_destroy_image(e->mlx, e->img);
 	expose_hook(e);
 	return (0);

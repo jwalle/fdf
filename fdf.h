@@ -12,8 +12,8 @@
 
 #ifndef FDF_H
 # define FDF_H
-#define WINDOW_SIZE_X 1000
-#define WINDOW_SIZE_Y 1000
+#define WINDOW_SIZE_X 1500
+#define WINDOW_SIZE_Y 2000
 
 #include "minilibx_macos/mlx.h"
 #include <unistd.h>
@@ -59,7 +59,7 @@ typedef struct	s_env
 	double		a;
 }				t_env;
 
-void		get_map(t_env *e, char *str);
+int			get_map(t_env *e, char *str);
 int			get_next_line(int const fd, char **line);
 int			expose_hook(t_env *e);
 int			key_hook(int keycode, t_env *e);
@@ -71,6 +71,11 @@ t_coord		*get_position(int x, int y, int z, t_env *e);
 void		select_draw(t_coord *ori, t_coord* dest, t_env *e);
 void		free_tab_int(int **tab);
 void		free_tab_char(char **tab);
+void		draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
+void		draw_case_two(t_env *e, t_coord *ori, t_coord *dest);
+void		draw_case_three(t_env *e, t_coord *ori, t_coord *dest);
+void		draw_case_four(t_env *e, t_coord *ori, t_coord *dest);
+
 
 
 #endif
