@@ -29,13 +29,13 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 2;
+	e->zoom = 10;
 	e->h = 2;
-	e->start_x = 10;
-	e->start_y = 10;
+	e->start_x = 100;
+	e->start_y = 100;
 	e->z = -4;
-	e->w = 0.5;
-	e->g = 0.5;
+	e->w = 10; // son e->y
+	e->g = 20; // son e->g
 	e->a = 2;
 	e->color_set = 1;
 }

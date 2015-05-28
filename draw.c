@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static int	absolute(int res)
+int	absolute(int res)
 {
 	if (res < 0)
 		res *= (-1);
@@ -51,14 +51,14 @@ void		draw(t_env *e)
 	while (i <= e->line - 1)
 	{
 		j = 1;
-		while (j <= e->tab[0][0])
+		while (j <= e->tab[i][0])
 		{
-			if (j < e->tab[0][0])
-				select_draw(get_position(i, j, e->tab[i][j], e),
-					get_position(i, j + 1, e->tab[i][j + 1], e), e);
-			if (i < e->line - 1)
-				select_draw(get_position(i, j, e->tab[i][j], e),
-					get_position(i + 1, j, e->tab[i + 1][j], e), e);
+			if (j < e->tab[i][0])
+				select_draw(get_position_ori(i, j, e->tab[i][j], e),
+					get_position_right(i, j + 1, e->tab[i][j + 1], e), e);
+			if (i < e->line - 1 && j <= e->tab[i + 1][0])
+				select_draw(get_position_ori(i, j, e->tab[i][j], e),
+					get_position_down(i + 1, j, e->tab[i + 1][j], e), e);
 			j++;
 		}
 		i++;

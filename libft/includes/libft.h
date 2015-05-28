@@ -6,7 +6,7 @@
 /*   By: jwalle <jwalle@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/07 12:38:35 by jwalle            #+#    #+#             */
-/*   Updated: 2014/11/20 17:39:56 by jwalle           ###   ########.fr       */
+/*   Updated: 2015/05/27 13:32:15 by jwalle           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,16 @@ void				ft_putnbr_fd(int n, int fd);
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
+void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+void				ft_putstr_color(char *s1, char *s2);
+char				*ft_trijoin(char *s1, char *s2, char *s3);
+int					ft_tab_len(char **tab);
+void				ft_putnbl(int n);
+void				ft_free_tab(void ***tab);
+void				ft_putstr_tab(char **tab);
+void				ft_putnbl_tab(int *tab, int size_tab);
 
 #endif

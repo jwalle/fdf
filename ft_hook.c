@@ -25,7 +25,10 @@ int key_hook(int keycode, t_env *e)
 	printf("key : %d\n", keycode);
 	if (keycode == 53)
 	{
+		free_tab_int(e->tab);
+		mlx_clear_window(e->mlx, e->win);
 		mlx_destroy_image(e->mlx, e->img);
+		mlx_destroy_window(e->mlx, e->win);
 		exit(0);
 	}
 	if (keycode == 69)
@@ -52,14 +55,14 @@ int key_hook(int keycode, t_env *e)
 		e->z += 0.1;
 	if (keycode == 7)
 		e->z -= 0.1;
-	if (keycode == 115)
-		e->w += 0.1;
-	if (keycode == 119)
-		e->w -= 0.1;
-	if (keycode == 263)
-		e->g += 0.1;
-	if (keycode == 117)
-		e->g -= 0.1;
+	if (keycode == 13) // son y
+		e->w += 10;
+	if (keycode == 12) // son y
+		e->w -= 11;
+	if (keycode == 1) // son z
+		e->g += 11;
+	if (keycode == 0) // son z
+		e->g -= 10;
 	if (keycode == 0)
 		e->a += 0.1;
 	if (keycode == 2)
@@ -72,16 +75,8 @@ int key_hook(int keycode, t_env *e)
 		e->color_set = 3;
 	printf("x = %d,y = %d, zoom = %d\n", e->start_x, e->start_y, e->zoom);
 	printf("col = %d, line = %d\n", e->col, e->line);
+	mlx_clear_window(e->mlx, e->win);
 	mlx_destroy_image(e->mlx, e->img);
 	expose_hook(e);
-	return (0);
-}
-
-/* A retirer */
-
-int mouse_hook(int button, int x, int y, t_env *e)
-{
-	mlx_pixel_put(e->mlx, e->win, 2, 2, 0xFF0000);
-	printf("mouse : %d (%d:%d)\n", button, x, y);
-	return (0);
+	return (1);
 }

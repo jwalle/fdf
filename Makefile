@@ -12,7 +12,7 @@ SRC = main.c \
 
 OBJ			=	$(SRC:.c=.o)
 
-INC			=	-I./include -I./libft/include
+INC			=	-I./include -I./libft/includes
 LINK		=	-Llibft -lft $(LDFLAGS) $(MLXFLAGS)
 
 CFLAGS		=	-Wall -Wextra -Werror -g3 -g -pedantic
@@ -23,24 +23,22 @@ FLAGS		=	$(CFLAGS) $(MLXFLAGS) $(LDFLAGS)
 INC_MLX		=	minilibx_macos
 
 CC			=	/usr/bin/gcc
-RM			=	/bin/rm -v
+RM			=	/bin/rm -f
 
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJ)
-	make -C ./libft
-	make -C minilibx_macos
-	$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
-	make clean
+	@make -C ./libft
+	@make -C minilibx_macos
+	@$(CC) $(FLAGS) $(INC) $(LINK) $(OBJ) -o $(NAME)
 
 clean		:
-	make -C ./libft clean
-	$(RM) $(OBJ)
+	@make -C ./libft clean
+	@$(RM) $(OBJ)
 
-fclean		:	
-	clean
-	make -C ./libft fclean
-	$(RM) $(NAME)
+fclean		:	clean
+	@make -C ./libft fclean
+	@$(RM) $(NAME)
 
 re			:	fclean all
 
