@@ -39,7 +39,7 @@ void	ft_init(t_env *e)
 	e->start_y = 100;
 	e->z = -4;
 	e->w = 0;
-	e->g = 20;
+	e->g = 2;
 	e->a = 2;
 	e->color_set = 1;
 }
@@ -52,7 +52,7 @@ void	ft_reset(t_env *e)
 	e->start_y = 100;
 	e->z = -4;
 	e->w = 0;
-	e->g = 20;
+	e->g = 2;
 	e->a = 2;
 	e->color_set = 1;
 }

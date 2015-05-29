@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-t_coord	*get_position_ori(int x, int y, int z, t_env *e)
+t_coord	*get_position(int x, int y, int z, t_env *e)
 {
 	t_coord	*new;
 	int xx;
@@ -25,18 +25,19 @@ t_coord	*get_position_ori(int x, int y, int z, t_env *e)
 
 	xx = new->x;
 
-	new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	new->x = xx * cos(e->w) - new->y * sin(e->w);
 	new->y = xx * sin(e->w) + new->y * cos(e->w);
 
-	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
-	new->y = (e->h / 0.5) * (new->y * e->zoom) + e->start_x;
+	new->x = e->start_y + (new->x * e->zoom) + (new->y * e->zoom);
+	new->y = e->start_x + (e->h / 0.5) * (new->y * e->zoom);
 
-	new->x = new->x + (e->z * new->z);
+	new->x = e->g * new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);
 
 	return (new);
 }
 
+/*
 t_coord	*get_position_right(int x, int y, int z, t_env *e)
 {
 	t_coord	*new;
@@ -50,7 +51,7 @@ t_coord	*get_position_right(int x, int y, int z, t_env *e)
 
 	xx = new->x;
 
-	new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	new->x = xx * cos(e->w) - new->y * sin(e->w);
 	new->y = xx * sin(e->w) + new->y * cos(e->w);
 
 	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
@@ -58,7 +59,6 @@ t_coord	*get_position_right(int x, int y, int z, t_env *e)
 
 	new->x = new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);
-
 
 	return (new);
 }
@@ -76,7 +76,7 @@ t_coord	*get_position_down(int x, int y, int z, t_env *e)
 
 	xx = new->x;
 
-	new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	new->x = xx * cos(e->w) - new->y * sin(e->w);
 	new->y = xx * sin(e->w) + new->y * cos(e->w);
 
 	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
@@ -88,3 +88,4 @@ t_coord	*get_position_down(int x, int y, int z, t_env *e)
 	
 	return (new);
 }
+*/

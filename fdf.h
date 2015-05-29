@@ -70,7 +70,7 @@ void			draw(t_env *e);
 void			pxl_to_image(t_env *e, int x, int y, uint32_t color);
 void			draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
 uint32_t		ft_get_color(int z, t_env *e);
-t_coord			*get_position_ori(int x, int y, int z, t_env *e);
+t_coord			*get_position(int x, int y, int z, t_env *e);
 t_coord			*get_position_right(int x, int y, int z, t_env *e);
 t_coord			*get_position_down(int x, int y, int z, t_env *e);
 void			select_draw(t_coord *ori, t_coord *dest, t_env *e);

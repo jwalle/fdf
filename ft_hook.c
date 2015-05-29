@@ -63,9 +63,9 @@ void	ft_key1(int keycode, t_env *e)
 	if (keycode == 121)
 		e->h -= 0.1;
 	if (keycode == 1)
-		e->g += 11;
+		e->g += 1;
 	if (keycode == 0)
-		e->g -= 10;
+		e->g -= 1;
 	if (keycode == 0)
 		e->a += 0.1;
 	if (keycode == 2)
