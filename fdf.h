@@ -12,13 +12,15 @@
 
 #ifndef FDF_H
 # define FDF_H
-#define WINDOW_SIZE_X 1500
-#define WINDOW_SIZE_Y 2000
+#define WINDOW_SIZE_X 1200
+#define WINDOW_SIZE_Y 1200
 
 #include "minilibx_macos/mlx.h"
 #include <unistd.h>
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
 #include "get_next_line.h"
 
 
@@ -47,6 +49,7 @@ typedef struct	s_env
 	void		*img;
 	int 		bpp;
 	int 		sl;
+	char		*map;
 	int 		endian;
 	char		*change;
 	char 		*data;
@@ -57,6 +60,7 @@ typedef struct	s_env
 	double		z;
 	double		g;
 	double		a;
+	double		last_time;
 }				t_env;
 
 int			absolute(int res);

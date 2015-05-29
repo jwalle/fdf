@@ -15,6 +15,7 @@
 t_coord	*get_position_ori(int x, int y, int z, t_env *e)
 {
 	t_coord	*new;
+	int xx;
 
 	new = (t_coord*)malloc(sizeof(t_coord));
 
@@ -25,8 +26,15 @@ t_coord	*get_position_ori(int x, int y, int z, t_env *e)
 	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
 	new->y = (e->h / 0.5) * (new->y * e->zoom) + e->start_x;
 
+	xx = new->x;
+
+	new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	new->y = xx * sin(e->w) + new->y * cos(e->w);
+
 	new->x = new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);
+
+
 
 	return (new);
 }
@@ -34,6 +42,7 @@ t_coord	*get_position_ori(int x, int y, int z, t_env *e)
 t_coord	*get_position_right(int x, int y, int z, t_env *e)
 {
 	t_coord	*new;
+	//int xx;
 
 	new = (t_coord*)malloc(sizeof(t_coord));
 
@@ -43,6 +52,11 @@ t_coord	*get_position_right(int x, int y, int z, t_env *e)
 
 	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
 	new->y = ((e->h / 0.5) * (new->y * e->zoom)) + e->start_x;
+
+	//xx = new->x;
+
+	//new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	//new->y = xx * sin(e->w) + new->y * cos(e->w);
 
 	new->x = new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);
@@ -53,6 +67,7 @@ t_coord	*get_position_right(int x, int y, int z, t_env *e)
 t_coord	*get_position_down(int x, int y, int z, t_env *e)
 {
 	t_coord	*new;
+	int xx;
 
 	new = (t_coord*)malloc(sizeof(t_coord));
 
@@ -62,6 +77,11 @@ t_coord	*get_position_down(int x, int y, int z, t_env *e)
 
 	new->x = (e->start_y + (new->x * e->zoom)) + (new->y * e->zoom);
 	new->y = ((e->h / 0.5) * (new->y * e->zoom)) + e->start_x;
+	
+	xx = new->x;
+
+	new->x = new->x * cos(e->w) - new->y * sin(e->w);
+	new->y = xx * sin(e->w) + new->y * cos(e->w);
 
 	new->x = new->x + (e->z * new->z);
 	new->y = new->y + ((e->z / 2) * new->z);

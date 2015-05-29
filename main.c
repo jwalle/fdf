@@ -26,6 +26,10 @@ void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 
 void	ft_init(t_env *e)
 {
+	struct timeval time;
+
+	gettimeofday(&time, NULL);
+	e->last_time = time.tv_sec + time.tv_usec * 1e-6;
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
@@ -34,7 +38,7 @@ void	ft_init(t_env *e)
 	e->start_x = 100;
 	e->start_y = 100;
 	e->z = -4;
-	e->w = 10; // son e->y
+	e->w = 0; // son e->y
 	e->g = 20; // son e->g
 	e->a = 2;
 	e->color_set = 1;
@@ -45,6 +49,7 @@ int		main(int ac, char **av)
 	t_env e;
 
 	ft_init(&e);
+	e.map = ft_strdup(av[1]);
 	if (ac == 2)
 	{
 		if (!get_map(&e, av[1]))
