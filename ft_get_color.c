@@ -31,7 +31,7 @@ uint32_t	ft_get_color3(int z, t_env *e)
 	if (z > 10 && e->color_set == 3)
 		return (0xBF7900);
 	return (0xFF0000);
-} // HSV reverse.
+}
 
 uint32_t	ft_get_color2(int z, t_env *e)
 {
@@ -52,11 +52,11 @@ uint32_t	ft_get_color2(int z, t_env *e)
 	if (z > 10 && e->color_set == 2)
 		return (0xCAC3B8);
 	return (ft_get_color3(z, e));
-} // HSV gradient.
+}
 
 uint32_t	ft_get_color(int z, t_env *e)
 {
-	z -= 1;
+	z /= 2;
 	if (z < 0 && e->color_set == 1)
 		return (0x0054E5);
 	if (z == 0 && e->color_set == 1)
@@ -74,4 +74,4 @@ uint32_t	ft_get_color(int z, t_env *e)
 	if (z > 10 && e->color_set == 1)
 		return (0xab020a);
 	return (ft_get_color2(z, e));
-} //carto gradient.
+}

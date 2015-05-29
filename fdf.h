@@ -12,22 +12,21 @@
 
 #ifndef FDF_H
 # define FDF_H
-#define WINDOW_SIZE_X 1200
-#define WINDOW_SIZE_Y 1200
+# define WINDOW_SIZE_X 1200
+# define WINDOW_SIZE_Y 1200
 
-#include "minilibx_macos/mlx.h"
-#include <unistd.h>
-#include <math.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <sys/time.h>
-#include "get_next_line.h"
-
+# include "minilibx_macos/mlx.h"
+# include <unistd.h>
+# include <math.h>
+# include <stdlib.h>
+# include <stdio.h>
+# include <sys/time.h>
+# include "get_next_line.h"
 
 typedef struct	s_coord
 {
-	double 		x;
-	double 		y;
+	double		x;
+	double		y;
 	int			z;
 	int			k;
 	int			s;
@@ -47,15 +46,13 @@ typedef struct	s_env
 	void		*mlx;
 	void		*win;
 	void		*img;
-	int 		bpp;
-	int 		sl;
+	int			bpp;
+	int			sl;
 	char		*map;
-	int 		endian;
+	int			endian;
 	char		*change;
-	char 		*data;
+	char		*data;
 	int			**tab;
-	int			SIZE_Y;
-	int			SIZE_X;
 	double		w;
 	double		z;
 	double		g;
@@ -63,26 +60,25 @@ typedef struct	s_env
 	double		last_time;
 }				t_env;
 
-int			absolute(int res);
-int			get_map(t_env *e, char *str);
-int			get_next_line(int const fd, char **line);
-int			expose_hook(t_env *e);
-int			key_hook(int keycode, t_env *e);
-void		draw(t_env *e);
-void		pxl_to_image(t_env *e, int x, int y, uint32_t color);
-void		draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
-uint32_t	ft_get_color(int z, t_env *e);
-t_coord		*get_position_ori(int x, int y, int z, t_env *e);
-t_coord		*get_position_right(int x, int y, int z, t_env *e);
-t_coord		*get_position_down(int x, int y, int z, t_env *e);
-void		select_draw(t_coord *ori, t_coord* dest, t_env *e);
-void		free_tab_int(int **tab);
-void		free_tab_char(char **tab);
-void		draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
-void		draw_case_two(t_env *e, t_coord *ori, t_coord *dest);
-void		draw_case_three(t_env *e, t_coord *ori, t_coord *dest);
-void		draw_case_four(t_env *e, t_coord *ori, t_coord *dest);
-
-
+void			ft_reset(t_env *e);
+int				absolute(int res);
+int				get_map(t_env *e, char *str);
+int				get_next_line(int const fd, char **line);
+int				expose_hook(t_env *e);
+int				key_hook(int keycode, t_env *e);
+void			draw(t_env *e);
+void			pxl_to_image(t_env *e, int x, int y, uint32_t color);
+void			draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
+uint32_t		ft_get_color(int z, t_env *e);
+t_coord			*get_position_ori(int x, int y, int z, t_env *e);
+t_coord			*get_position_right(int x, int y, int z, t_env *e);
+t_coord			*get_position_down(int x, int y, int z, t_env *e);
+void			select_draw(t_coord *ori, t_coord *dest, t_env *e);
+void			free_tab_int(int **tab);
+void			free_tab_char(char **tab);
+void			draw_case_one(t_env *e, t_coord *ori, t_coord *dest);
+void			draw_case_two(t_env *e, t_coord *ori, t_coord *dest);
+void			draw_case_three(t_env *e, t_coord *ori, t_coord *dest);
+void			draw_case_four(t_env *e, t_coord *ori, t_coord *dest);
 
 #endif

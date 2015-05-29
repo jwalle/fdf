@@ -12,14 +12,14 @@
 
 #include "fdf.h"
 
-int	absolute(int res)
+int		absolute(int res)
 {
 	if (res < 0)
 		res *= (-1);
 	return (res);
 }
 
-void		select_draw(t_coord *ori, t_coord *dest, t_env *e)
+void	select_draw(t_coord *ori, t_coord *dest, t_env *e)
 {
 	if (dest != NULL && ori != NULL)
 	{
@@ -42,7 +42,7 @@ void		select_draw(t_coord *ori, t_coord *dest, t_env *e)
 	}
 }
 
-void		draw(t_env *e)
+void	draw(t_env *e)
 {
 	int i;
 	int j;

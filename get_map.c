@@ -84,5 +84,6 @@ int		get_map(t_env *e, char *str)
 	}
 	if (!e->tab)
 		return (0);
+	close(fd);
 	return (1);
 }
