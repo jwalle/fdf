@@ -24,6 +24,36 @@ void	pxl_to_image(t_env *e, int x, int y, uint32_t color)
 	}
 }
 
+void	ft_reset(t_env *e)
+{
+	e->zoom = 15;
+	e->h = 3.5;
+	e->start_x = 50;
+	e->start_y = 200;
+	e->z = -2.5;
+	e->w = 0.9;
+	e->g = 0.5;
+	e->a = 30;
+	e->a = 40;
+	e->color_set = 1;
+	e->projection = 2;
+}
+
+void	ft_reset_iso(t_env *e)
+{
+	e->zoom = 10;
+	e->h = -9.3;
+	e->start_x = 100;
+	e->start_y = 0;
+	e->z = 4.5;
+	e->w = -2.1;
+	e->g = 3;
+	e->a = 34;
+	e->b = 39.9;
+	e->color_set = 1;
+	e->projection = 1;
+}
+
 void	ft_init(t_env *e)
 {
 	struct timeval time;
@@ -33,28 +63,7 @@ void	ft_init(t_env *e)
 	e->tab = NULL;
 	e->line = 0;
 	e->col = 0;
-	e->zoom = 10;
-	e->h = 1.5;
-	e->start_x = 100;
-	e->start_y = 100;
-	e->z = -4;
-	e->w = 0;
-	e->g = 2;
-	e->a = 2;
-	e->color_set = 1;
-}
-
-void	ft_reset(t_env *e)
-{
-	e->zoom = 10;
-	e->h = 1.5;
-	e->start_x = 100;
-	e->start_y = 100;
-	e->z = -4;
-	e->w = 0;
-	e->g = 2;
-	e->a = 2;
-	e->color_set = 1;
+	ft_reset(e);
 }
 
 int		main(int ac, char **av)

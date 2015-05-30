@@ -19,7 +19,6 @@
 # include <unistd.h>
 # include <math.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <sys/time.h>
 # include "get_next_line.h"
 
@@ -57,10 +56,13 @@ typedef struct	s_env
 	double		z;
 	double		g;
 	double		a;
+	double		b;
+	int			projection;
 	double		last_time;
 }				t_env;
 
 void			ft_reset(t_env *e);
+void			ft_reset_iso(t_env *e);
 int				absolute(int res);
 int				get_map(t_env *e, char *str);
 int				get_next_line(int const fd, char **line);
