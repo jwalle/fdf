@@ -40,5 +40,3 @@ t_coord	*get_position(int x, int y, int z, t_env *e)
 	}
 	return (new);
 }
-
-//git add -A ; git commit -m "hop" ; git push origin noll
