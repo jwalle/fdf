@@ -21,7 +21,7 @@ MLXFLAGS	=	-L $(INC_MLX) -lmlx -framework OpenGL -framework AppKit
 FLAGS		=	$(CFLAGS) $(MLXFLAGS) $(LDFLAGS)
 INC_MLX		=	minilibx_macos
 
-CC			=	/usr/bin/gcc
+CC			=	clang
 RM			=	/bin/rm -v
 
 all			:	$(NAME)
